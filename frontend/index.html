@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Текстовый адаптер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Текстовый адаптер</h1>
+    <form id="upload-form" method="POST" action="/upload/" enctype="multipart/form-data">
+        <label for="file">Загрузите файл:</label>
+        <input type="file" id="file" name="file" required><br><br>
+        <label for="level">Уровень адаптации:</label>
+        <select id="level" name="level" required>
+            <option value="a1">A1</option>
+            <option value="a2">A2</option>
+            <option value="b1">B1</option>
+            <option value="b2">B2</option>
+            <option value="c1">C1</option>
+            <option value="c2">C2</option>
+        </select><br><br>
+        <button type="submit">Адаптировать</button>
+    </form>
+</body>
+</html>
