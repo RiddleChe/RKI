@@ -4,17 +4,15 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-# Подключаем статический фронтенд
-app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
 
 @app.post("/upload/")
-async def upload_file(file: UploadFile, level: str = Form(...)):
-    # Просто возвращаем данные для теста
-    content = await file.read()
-    return JSONResponse(content={
-        "filename": file.filename,
-        "content_type": file.content_type,
-        "level": level,
-        "file_content": content.decode("utf-8", errors="ignore")[:500]  # Только первые 500 символов
-    })
+async def upload_file(file: UploadFile = Form(...), level: str = Form(...)):
+    # Проверяем, что файл получен
+    if not file:
+        return JSONResponse({"error": "Файл не загружен"}, status_code=400)
+
+    # Пример обработки файла (ничего не делаем с ним пока)
+    return JSONResponse({"message": f"Файл '{file.filename}' загружен с уровнем {level}"})
+# Подключаем статический фронтенд
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
