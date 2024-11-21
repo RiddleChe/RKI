@@ -6,13 +6,13 @@ const url = "http://127.0.0.1:8000";
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const fileInput = document.querySelector('#file'); // Получаем input с файлом
+    const fileInput = document.querySelector('#file');
     const level = document.querySelector('#level');
 
     // Создаем объект FormData
-    const formData = new FormData(); // Исправлено: formDate -> formData
-    formData.append('file', fileInput.files[0]); // Добавляем файл
-    formData.append('level', level.value); // Уровень адаптации
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
+    formData.append('level', level.value);
 
     try {
         // Отправляем запрос на сервер
@@ -26,9 +26,15 @@ form.addEventListener('submit', async (event) => {
             throw new Error(`Ошибка: ${response.status}`);
         }
 
-        // Читаем ответ сервера
+        // Читаем JSON-ответ от сервера
         const result = await response.json();
-        responseDiv.innerText = `Ответ сервера: ${JSON.stringify(result)}`;
+        console.log(result)
+
+        // Отображаем ссылку для скачивания обработанного файла
+        responseDiv.innerHTML = `
+            <p>${result.message}</p>
+            <a href="${url}${result.file_url}" download target="_blank">Скачать обработанный файл</a>
+        `;
     } catch (error) {
         // Обрабатываем ошибки
         responseDiv.innerText = `Ошибка: ${error.message}`;
