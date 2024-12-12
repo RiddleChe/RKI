@@ -1,29 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adapter</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/logo-compact.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Текстовый адаптер</h1>
-    <form id="upload-form">
-        <label for="file">Загрузите файл:</label>
-        <input type="file" id="file" name="file" required><br><br>
-        <label for="level">Уровень адаптации:</label>
-        <select id="level" name="level" required>
-            <option value="a1">A1</option>
-            <option value="a2">A2</option>
-            <option value="b1">B1</option>
-            <option value="b2">B2</option>
-            <option value="c1">C1</option>
-            <option value="c2">C2</option>
-        </select><br><br>
-        <button type="submit">Адаптировать</button>
-    </form>
-    <div class="respons"></div>
+    <div class="wraper">
+        <header class="header">
+            <a href="#"><img class="header__logo" src="images/logo.svg" alt="logo"
+                             width="289" height="59"
+            ></a>
+            <div class="header__link">
+                <a href="#" class="link">Библиотека текстов</a>
+                <a href="#" class="link link-about">О нас</a>
+            </div>
+        </header>
+        <main>
+            <div class="respons"></div>
+        </main>
+        <footer class="footer">
+            <form id="upload-form" class="footer__form">
+                <div class="form__file-adap">
+                    <div class="form__file">
+                        <label for="file" class="file__label">Выберите файл</label>
+                        <input type="file" class="file__input" id="file" name="file" required>
+                    </div>
+
+
+
+                    <select class="form__select" id="level" name="level" required>
+                        <option value="a1">A1</option>
+                        <option value="a2">A2</option>
+                        <option value="b1">B1</option>
+                        <option value="b2">B2</option>
+                        <option value="c1">C1</option>
+                        <option value="c2">C2</option>
+                    </select>
+
+                </div>
+                <button type="submit">Адаптировать</button>
+            </form>
+        </footer>
+    </div>
+
+
 
 </body>
 <script src="script.js"></script>
